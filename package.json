@@ -1,0 +1,19 @@
+{
+  "name": "statswizard",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yadhuk94/statswizard.git"
+  },
+  "author": "Yadhu Krishnan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yadhuk94/statswizard/issues"
+  },
+  "homepage": "https://github.com/yadhuk94/statswizard#readme"
+}
