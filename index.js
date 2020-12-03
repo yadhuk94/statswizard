@@ -32,7 +32,7 @@ const roundToNearestMultiple = (number, roundNum) => {
       ? 0
       : roundNum.toString().split(".")[1].length || 0;
   const rem = (number % roundNum).toFixed(digits) * 1;
-  console.log(rem, digits);
+
   if (rem >= roundNum / 2) return number + (roundNum - rem);
   else return (number - rem).toFixed(digits) * 1;
 };
