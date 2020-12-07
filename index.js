@@ -1,7 +1,27 @@
+const maximum = (data) => Math.max(...data);
+
+const minimum = (data) => Math.min(...data);
+
+const sum = (data) =>
+  data.reduce((sum, value) => {
+    if (isNaN(value)) {
+      console.error("One of the elements is not a number");
+      return undefined;
+    } else return sum + value * 1;
+  }, 0);
+
+const product = (data) =>
+  data.reduce((product, value) => {
+    if (isNaN(value)) {
+      console.error("One of the elements is not a number");
+      return undefined;
+    } else return product * value;
+  }, 1);
+
 const mean = (data) => {
   const avg = sum(data) / data.length;
 
-  return avg;
+  return isNaN(avg) ? undefined : avg;
 };
 
 const harmonicMean = (data) => {
@@ -53,16 +73,6 @@ const geometricMean = (data) => {
     : prod ** (1 / data.length);
 };
 
-const maximum = (data) => Math.max(...data);
-
-const minimum = (data) => Math.min(...data);
-
-const sum = (data) =>
-  data.reduce((sum, value) => {
-    if (isNaN(value)) return sum + 0;
-    else return sum + value;
-  }, 0);
-
 const standardDeviation = (values) => {
   const avg = mean(values);
 
@@ -87,12 +97,13 @@ const roundToNearestMultiple = (number, roundNum) => {
 };
 
 module.exports = {
-  mean,
-  standardDeviation,
   maximum,
   minimum,
   sum,
-  roundToNearestMultiple,
+  product,
   harmonicMean,
   geometricMean,
+  mean,
+  standardDeviation,
+  roundToNearestMultiple,
 };
