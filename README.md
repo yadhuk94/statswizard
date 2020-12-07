@@ -28,6 +28,14 @@ const sum = sw.sum(data);
 console.log(sum); // sum => 55
 ```
 
+## Product
+
+```javascript
+const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const product = sw.product(data);
+console.log(product); // product => 3628800
+```
+
 ## Mean
 
 ```javascript
