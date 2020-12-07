@@ -1,7 +1,56 @@
-const average = (data) => {
+const mean = (data) => {
   const avg = sum(data) / data.length;
 
   return avg;
+};
+
+const harmonicMean = (data) => {
+  const invSum = data.reduce((invSum, val) => {
+    if (isNaN(val) || val <= 0) {
+      console.error(
+        "One of your numbers is a non positive number. Please make sure all the numbers in the list are positive"
+      );
+      return undefined;
+    }
+
+    return invSum + 1 / val;
+  }, 0);
+
+  return isNaN(invSum) ? undefined : data.length / invSum;
+};
+
+const geometricMean = (data) => {
+  let positive = [];
+  let negative = [];
+  const prod = data.reduce((prod, val) => {
+    if (isNaN(val)) {
+      console.error("One of the elements is not a number");
+      return undefined;
+    }
+
+    if (val < 0) {
+      negative.push(val);
+      return prod * val * -1;
+    }
+    if (val > 0) {
+      positive.push(val);
+    }
+
+    return prod * val;
+  }, 1);
+
+  if (positive.length !== 0 && negative.length !== 0) {
+    console.error(
+      "Geometric mean can only be calculated when all numbers have the same sign."
+    );
+    return undefined;
+  }
+
+  return isNaN(prod)
+    ? undefined
+    : positive.length === 0 && negative.length !== 0
+    ? -1 * prod ** (1 / data.length)
+    : prod ** (1 / data.length);
 };
 
 const maximum = (data) => Math.max(...data);
@@ -15,11 +64,11 @@ const sum = (data) =>
   }, 0);
 
 const standardDeviation = (values) => {
-  const avg = average(values);
+  const avg = mean(values);
 
   const squareDiffs = values.map((value) => (value * 1 - avg) ** 2);
 
-  const avgSquareDiff = average(squareDiffs);
+  const avgSquareDiff = mean(squareDiffs);
 
   const stdDev = Math.sqrt(avgSquareDiff);
 
@@ -38,10 +87,12 @@ const roundToNearestMultiple = (number, roundNum) => {
 };
 
 module.exports = {
-  average,
+  mean,
   standardDeviation,
   maximum,
   minimum,
   sum,
   roundToNearestMultiple,
+  harmonicMean,
+  geometricMean,
 };
